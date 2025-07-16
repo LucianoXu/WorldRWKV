@@ -6,8 +6,8 @@ import numpy as np
 
 from infer.worldmodel import Worldinfer
 
-llm_path='/home/rwkv/model/rwkv7-0.4b-cnasr-step2'
-encoder_path='/home/rwkv/model/facebookhubert-large-ls960-ft'
+llm_path='/home/yingte/projects/WorldRWKV/RWKV7-0.4B-wavlmLarge-CNASR-demo/RWKV7-0.4B-wavlmLarge-CNASR-demo'
+encoder_path='/home/yingte/projects/WorldRWKV/hubert-large-ls960-ft'
 encoder_type='speech'
 
 # 初始化模型

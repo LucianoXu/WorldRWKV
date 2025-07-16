@@ -3,8 +3,12 @@ from infer.worldmodel import Worldinfer
 from PIL import Image
 import re
 # 初始化模型
-llm_path = '/home/alic-li/RWKV-v7/world_weights/rwkv-0'
-encoder_path = '/home/alic-li/RWKV-v7/siglip2-base-patch16-384/'
+
+# llm_path = '/home/yingte/projects/WorldRWKV/ModRWKV-0.4B-V1/rwkv-0'
+
+# we can use a better model here
+llm_path='/home/yingte/projects/WorldRWKV/RWKV7-3B-siglip2/rwkv-0'
+encoder_path = '/home/yingte/projects/WorldRWKV/siglip2-base-patch16-384'
 encoder_type = 'siglip'
 
 # 全局变量存储当前上传的图片和模型状态
@@ -19,6 +23,7 @@ model = Worldinfer(model_path=llm_path, encoder_type=encoder_type, encoder_path=
 import html  # 导入html库
 
 import re
+
 
 # 处理用户输入的核心逻辑
 def chat_fn(user_input, chat_history, image=None):
@@ -60,14 +65,18 @@ def chat_fn(user_input, chat_history, image=None):
         answer_matches = answer_pattern.findall(bot_response)
         
         # 构造最终的输出
-        final_response = ""
-        for match in think_matches:
-            final_response += f"<details><summary>Think 🤔 </summary>{html.escape(match)}</details>"
-        
-        for match in answer_matches:
-            final_response += "Answer 💡"
-            final_response += "\n"
-            final_response += html.escape(match)
+        if not think_matches and not answer_matches:
+            final_response = bot_response
+
+        else:
+            final_response = ""
+            for match in think_matches:
+                final_response += f"<details><summary>Think 🤔 </summary>{html.escape(match)}</details>"
+            
+            for match in answer_matches:
+                final_response += "Answer 💡"
+                final_response += "\n"
+                final_response += html.escape(match)
         
         # 转义HTML标签
         bot_response = final_response
@@ -81,6 +90,7 @@ def chat_fn(user_input, chat_history, image=None):
     
     # 返回更新后的组件状态
     return "", chat_history  # 清空输入框，更新聊天记录
+
 # 处理图片上传
 def update_image(image):
     global current_image, current_state,first_question
