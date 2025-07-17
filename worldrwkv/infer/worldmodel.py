@@ -11,11 +11,11 @@ print(torch.version.cuda)
 # set these before import RWKV
 os.environ['RWKV_JIT_ON'] = '1'
 os.environ["RWKV_CUDA_ON"] = '1' # '1' to compile CUDA kernel (10x faster), requires c++ compiler & cuda libraries
-from infer.rwkv.model import RWKV # pip install rwkv
-from infer.rwkv.utils import PIPELINE, PIPELINE_ARGS
+from .rwkv.model import RWKV # pip install rwkv
+from .rwkv.utils import PIPELINE, PIPELINE_ARGS
 
 
-from world.world_encoder import WorldEncoder
+from worldrwkv.world.world_encoder import WorldEncoder
 
 class Worldinfer():
     def __init__(self, model_path, encoder_type, encoder_path, strategy='cuda bf16', args=None):

@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from world.encoder.speech_encoder import SpeechEncoder
-# from world.encoder.visual_encoder import VisualEncoder
-from world.encoder.whisper_encoder import WhisperEncoder
-from world.encoder.clip_encoder import ClipEncoder
-from world.encoder.siglip_encoder import SiglipEncoder
+from worldrwkv.world.encoder.speech_encoder import SpeechEncoder
+# from worldrwkv.world.encoder.visual_encoder import VisualEncoder
+from worldrwkv.world.encoder.whisper_encoder import WhisperEncoder
+from worldrwkv.world.encoder.clip_encoder import ClipEncoder
+from worldrwkv.world.encoder.siglip_encoder import SiglipEncoder
 
 
 class WorldEncoder(nn.Module):
