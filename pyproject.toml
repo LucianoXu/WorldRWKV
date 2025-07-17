@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["worldrwkv"]
+
+[project]
+name = "worldrwkv"
+version = "0.1.0"
+description = "worldrwkv is a Python package for RWKV-based world models."
+readme = "README.md"
+authors = [
+    {name = "Yingte", email = "lucianoxu@foxmail.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.12"
+dependencies = [
+]
